@@ -1,0 +1,195 @@
+1. ISTUDENT
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AssignmentLibrary
+{
+    public interface IStudent
+    {
+        public string LibCardNumber { set; get; }
+        public int Year { get; set; }
+
+
+        public string NoPartTimeStudent();
+        public string PartTimeStudents();
+
+
+    }
+    public class PartTimeStudent : IStudent
+    {
+        public string LibCardNumber { get; set; }
+        public int Year { get; set; }
+
+
+
+        public string NoPartTimeStudent()
+        {
+            return "I dont want Parttime student";
+        }
+
+        public string PartTimeStudents()
+        {
+            return "I  want Part time student";
+        }
+    }
+}
+
+
+
+2. BANK ACCOUNT
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AssignmentLibrary
+{
+    public interface BankAcount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+
+        bool Deposit(int Amount);
+        bool Withdraw(int Amount);
+
+    }
+    public class SavingsAccount : BankAcount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+        public double Interest;
+        public double MinimumBlance;
+
+        public bool Deposit(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool Withdraw(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public double Addinterest()
+        {
+
+            return Interest;
+        }
+    }
+    public class ODAccount : BankAcount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+        public double ODInterest;
+        public double ODLimit;
+
+        public bool Deposit(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool Withdraw(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public double AddODinterest()
+        {
+
+            return ODInterest;
+
+        }
+    }
+}
+
+
+
+MAIN METHOD:
+
+using AssignmentLibrary;
+using System;
+
+namespace Assignment3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //StudentEx();
+            BankAcountEx();
+        }
+        private static void StudentEx()
+        {
+            PartTimeStudent student = new PartTimeStudent();
+            student.LibCardNumber = "3458";
+            student.Year = 2021;
+            student.NoPartTimeStudent();
+            student.PartTimeStudents();
+            Console.WriteLine(student.NoPartTimeStudent());
+        }
+
+        private static void BankAcountEx()
+        {
+            SavingsAccount account = new SavingsAccount();
+
+            account.AccountHolderName = "James";
+            account.AccountNumber = 8899456;
+            account.BalanceAmount = 300;
+            account.Interest = 25;
+            account.MinimumBlance = 0;
+            Console.WriteLine(account.Deposit(200));
+            Console.WriteLine(account.Withdraw(200));
+            Console.WriteLine(account.Addinterest());
+
+            Console.WriteLine("_____________________");
+
+            ODAccount odaccount = new ODAccount();
+            odaccount.AccountHolderName = "Brock";
+            odaccount.AccountNumber = 4499678;
+            odaccount.BalanceAmount = 350;
+            odaccount.ODInterest = 15;
+            odaccount.ODLimit = 150;
+            Console.WriteLine(odaccount.Deposit(-200));
+            Console.WriteLine(odaccount.Withdraw(-200));
+            Console.WriteLine(odaccount.AddODinterest());
+        }
+    }
+}

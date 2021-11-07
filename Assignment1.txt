@@ -1,0 +1,124 @@
+using System;
+
+public enum days
+{
+    monday = 1, tuesday = 2, wednesday = 3, thrusday = 4, friday = 5, saturday = 6, sunday = 7
+}
+
+
+namespace Assignment1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            SumAvgEx();
+
+            //Holidays();
+
+            //DescendingEx();
+
+            //PrimeNumberEx();
+
+       
+        }
+
+        
+
+        private static void SumAvgEx()
+        {
+            int num1, num2, Sum;
+            float Avg;
+            Console.WriteLine("Enter the first Number");
+            num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Second Number");
+            num2 = int.Parse(Console.ReadLine());
+            Sum = num1 + num2;
+            Avg = Sum / 2F;
+            Console.WriteLine("sum is {0}", Sum);
+            Console.WriteLine("Avg is {0}", Avg);
+        }
+
+        private static void DescendingEx()
+        {
+            int numb1, numb2, numb3, store, high, low;
+            Console.WriteLine(" Enter a number 1: ");
+            numb1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" Enter a number 2: ");
+            numb2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" Enter a number 3: ");
+            numb3 = Convert.ToInt32(Console.ReadLine());
+
+            if (numb1 > numb2)
+            {
+                store = numb1;
+                low = numb2;
+            }
+            else
+            {
+                store = numb2;
+                low = numb1;
+            }
+            if (store > numb3)
+            {
+                high = store;
+                if (low > numb3)
+                {
+                    store = low;
+                    low = numb3;
+                }
+                else
+                {
+                    store = numb3;
+                }
+            }
+            else high = numb3;
+            Console.WriteLine(" Numbers in descending order are: {0} {1} {2}", high, store, low);
+        }
+
+        
+
+        private static void Holidays()
+        {
+            Console.WriteLine("enter numbers in between 1 to 7");
+            int day = Convert.ToInt32(Console.ReadLine()); ;
+
+            if (day >= 6 && day <= 7)
+            {
+                Console.WriteLine((days)day + " is holiday");
+            }
+            else if (day <= 5 && day > 0)
+            {
+                Console.WriteLine((days)day + " is working day");
+            }
+            else
+            {
+                Console.WriteLine("invalid entry");
+            }
+
+        }
+
+        private static void PrimeNumberEx()
+        {
+            int num, m, i;
+            Console.WriteLine("Enter a number");
+            num = Convert.ToInt32(Console.ReadLine());
+            m = num / 2;
+            for (i = 2; i <= m; i++)
+            {
+                if (num % i == 0)
+                {
+                    Console.WriteLine("Not prime number");
+                    break;
+                }
+
+            }
+                if (num % i != 0)
+                {
+                    Console.WriteLine(" Prime number");
+                }
+            
+        }
+    }
+}
